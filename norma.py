@@ -125,15 +125,22 @@ class NormaMachine:
         else:
             # IF A !=0, A was greater than B
             self.set_zero(result)
+    
+    def test_equal(self, a:int ,b:int, result:int):
 
+        self.set_zero(result)
+
+        self.attribute(self.registers[7], self.registers[a])
+        self.attribute(self.registers[8], self.registers[b])
+
+        while not self.is_zero(7) and not self.is_zero(8):
+            self.decrement(7)
+            self.decrement(8)
+        
+        if self.is_zero(7) and self.is_zero(8):
+            self.increment(result)
 
     def test_if_prime(self):
-
-        # MAIN LOGIC:
-        # All non prime numbers n are divisible by a number smaller than the square root of n
-        # All non prime number are divisible by a prime number
-        # HENCE, in order to test if n is a prime number, instead of trying to divide it by all smaller numbers
-        # we can just try to divide by all prime numbers that are smaller than the square root of n
 
         # Pseudocode
         # For a given input target_number
