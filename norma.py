@@ -129,13 +129,61 @@ class NormaMachine:
 
     def test_if_prime(self):
 
-        # First 
+        # MAIN LOGIC:
+        # All non prime numbers n are divisible by a number smaller than the square root of n
+        # All non prime number are divisible by a prime number
+        # HENCE, in order to test if n is a prime number, instead of trying to divide it by all smaller numbers
+        # we can just try to divide by all prime numbers that are smaller than the square root of n
 
-        # Set a multiple in two spots, one for permanence and another for iteration
+        # Pseudocode
+        # For a given input target_number
+        # Let us define a prime_array of length n, in which all values are initially 0
+        # Let us also define a pointer p which is initially 0
+        
+        # SET target_backup = target_number
 
-        # Iterate 
+        # IF i=0, not prime
+        # IF i=1, not prime
+        # HENCE: If 1 is not smaller than the number, not prime, return
 
-        # Loop for the multiple
+        # SET current_number = 2 (first value that is not by definition not a prime)
+        # SET continue_flag = 1
+
+        # WHILE continue_flag is not 0
+
+            # FETCH FROM prime_array[p] INTO prime
+
+            # IF prime == current_number (this is an already known prime)
+                # INCREMENT current_number
+                # SET p=0
+
+            # ELSE IF prime is not 0
+                
+                #? SET current_number_backup = current_number
+                # SET continue_flag2 = 1
+
+                # WHILE continue_flag2 is not 0
+
+                    # DECREMENT current_number prime times
+                
+                    # IF current_number is 0 (not a prime)
+                        # SET current_number = current_number_backup
+                        # INCREMENT current_number
+                        # SET continue_flag2 = 0
+                    
+                    # ELSE IF current_number < prime
+                        # SET current_number = current_number_backup
+                        # SET continue_flag2 = 0
+                        # INCREMENT p
+
+            # ELSE (None of the stored prime numbers divide the current number, hence it is a prime
+                # IF current_number == target_number
+                    # return prime
+                
+                # SET prime_array[p] = current_number
+                # SET p = 0
+                # INCREMENT current_number
+
 
     
     def start(self):
