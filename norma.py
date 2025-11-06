@@ -190,7 +190,7 @@ class NormaMachine:
                 # SET prime_array[p] = current_number
                 # SET p = 0
                 # INCREMENT current_number
-
+        pass
 
     
     def start(self):
