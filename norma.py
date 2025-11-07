@@ -261,6 +261,8 @@ class NormaMachine:
                    continue_flag_2_register:int = 17,
                    current_number_backup_register:int = 18,
                    prime_array_start_register:int = 29): # Taken: 7,8,9,10,11,12,13,14,15,16,29
+        
+        print("AA: ", self.registers[prime_array_start_register])
         # Pseudocode
         # For a given input target_number : target_number_register
         # Let us define a prime_array of length n, in which all values are initially 0 (set all prime array elements to 0) : self.prime_array
@@ -282,7 +284,7 @@ class NormaMachine:
         self.increment(current_number_register)
 
         # Let us also define a pointer p which is initially 0 (relative to the prime array)
-        self.attribute(prime_pointer_register,29)
+        self.attribute(prime_pointer_register,self.registers[prime_array_start_register])
 
         # SET continue_flag = 1
         self.increment(continue_flag_1_register)
@@ -307,7 +309,7 @@ class NormaMachine:
                 self.increment(current_number_register)
 
                 # SET p=0
-                self.attribute(prime_pointer_register,29)
+                self.attribute(prime_pointer_register,prime_array_start_register)
 
             # ELSE IF prime is not 0
             elif not self.is_zero(current_prime_register):
@@ -368,7 +370,7 @@ class NormaMachine:
                 self.attribute(prime_pointer_register, current_number_register)
 
                 # SET p = 0
-                self.attribute(prime_pointer_register,29)
+                self.attribute(prime_pointer_register,prime_array_start_register)
 
                 # INCREMENT current_number
                 self.increment(current_number_register)
